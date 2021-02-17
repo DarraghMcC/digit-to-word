@@ -23,21 +23,21 @@ class Convertor
     {
         // is it a number
         if (!is_numeric($value)) {
-            log::info('Supplied value of $value is not numeric');
+            log::info('Supplied value is not numeric');
             return false;
-        }
+        } 
 
         // is it within our defined bounds
         $converted_val = floatval($value);
 
         if ($converted_val < self::MIN_VALUE || $converted_val > self::MAX_VALUE) {
-            log::info('Supplied value of $value is outside limit bounds');
+            log::info('Supplied value is outside limit bounds');
             return false;
         }
 
         // if has a decimal point, must have exact precision
         if (str_contains($value, '.') && strlen(explode('.', $value)[1]) != self::REQUIRED_PRECISION) {
-            log::info('Supplied value of $value has invalid decimal precision');
+            log::info('Supplied value has invalid decimal precision');
             return false;
         }
 
